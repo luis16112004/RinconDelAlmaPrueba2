@@ -3,665 +3,942 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>En Un Rincón Del Alma — Buffet Restaurante · Pachuca</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<title>CIRE Pachuca — Centro Internacional de Restauración y Excelencia</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --cream:    #f5ede0;
-    --gold:     #c9a84c;
-    --gold-lt:  #e8c97a;
-    --brown:    #3b2314;
-    --dark:     #110b06;
-    --mid:      #1e1109;
-    --card:     #1a0f07;
-    --text:     #d4bfa0;
-    --muted:    #7a6248;
-    --white:    #fdf6ec;
+    --gold:      #b8962e;
+    --gold-lt:   #d4b05a;
+    --gold-dk:   #8a6e1e;
+    --gold-glow: rgba(184,150,46,0.2);
+    --wine:      #6b1a2a;
+    --wine-lt:   rgba(107,26,42,0.08);
+    --white:     #ffffff;
+    --cream:     #fdfaf4;
+    --cream2:    #f7f2e8;
+    --text:      #3a2e22;
+    --muted:     #8a7a68;
+    --light:     #ede5d6;
+    --border:    rgba(184,150,46,0.2);
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--dark);
+    background: var(--cream);
     color: var(--text);
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-weight: 300;
-    letter-spacing: 0.04em;
     overflow-x: hidden;
+  }
+
+  /* subtle cross watermark */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      radial-gradient(circle at 15% 85%, rgba(107,26,42,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 85% 15%, rgba(184,150,46,0.05) 0%, transparent 40%);
   }
 
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.4rem 3rem;
-    background: linear-gradient(to bottom, rgba(17,11,6,0.95) 0%, transparent 100%);
-    backdrop-filter: blur(4px);
+    padding: 1.1rem 3rem;
+    background: rgba(253,250,244,0.97);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
   }
   .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem; font-style: italic; font-weight: 300;
-    color: var(--gold); letter-spacing: 0.1em;
+    display: flex; align-items: center; gap: .8rem;
   }
-  .nav-links { display: flex; gap: 2.4rem; }
+  .nav-cross {
+    font-size: 1.3rem; color: var(--gold);
+    font-family: 'Cinzel', serif;
+  }
+  .nav-name {
+    font-family: 'Cinzel', serif;
+    font-size: .95rem; font-weight: 600; letter-spacing: .1em;
+    color: var(--text);
+  }
+  .nav-name span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.2rem; }
   .nav-links a {
-    color: var(--text); text-decoration: none;
-    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; font-weight: 400;
     transition: color .3s;
   }
   .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 700;
+    background: var(--wine); color: var(--white);
+    padding: .55rem 1.4rem; text-decoration: none;
+    transition: background .3s;
+  }
+  .nav-cta:hover { background: #8a2235; }
 
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
     display: grid; place-items: center;
     position: relative; overflow: hidden;
-    text-align: center; padding: 0 2rem;
+    text-align: center; padding: 6rem 2rem 4rem;
   }
   .hero-bg {
     position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
-      linear-gradient(160deg, rgba(30,17,9,0.92) 0%, rgba(17,11,6,0.88) 50%, rgba(10,6,3,0.95) 100%),
-      url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80&fit=crop') center/cover no-repeat;
+      linear-gradient(to bottom, rgba(253,250,244,0) 0%, rgba(253,250,244,0) 30%, rgba(253,250,244,0.6) 65%, rgba(253,250,244,1) 100%),
+      url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1800&q=80&fit=crop') center top/cover no-repeat;
   }
-  /* decorative grain */
-  .hero-bg::after {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    opacity: 0.35; pointer-events: none;
-  }
-  /* decorative ring */
-  .hero-ring {
-    position: absolute;
-    width: 680px; height: 680px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,168,76,0.12);
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    animation: ringPulse 6s ease-in-out infinite;
-  }
-  .hero-ring-2 {
-    width: 520px; height: 520px;
-    border-color: rgba(201,168,76,0.07);
-    animation-delay: 2s;
-  }
-  @keyframes ringPulse {
-    0%,100% { transform: translate(-50%,-50%) scale(1); opacity:1; }
-    50%      { transform: translate(-50%,-50%) scale(1.03); opacity:.6; }
-  }
+  .hero-bg::after { display: none; }
+  /* gold corner ornaments */
+  .ornament { position: absolute; width: 100px; height: 100px; pointer-events: none; }
+  .ornament.tl { top: 5.5rem; left: 2.5rem; border-top: 1px solid rgba(184,150,46,0.4); border-left: 1px solid rgba(184,150,46,0.4); }
+  .ornament.tr { top: 5.5rem; right: 2.5rem; border-top: 1px solid rgba(184,150,46,0.4); border-right: 1px solid rgba(184,150,46,0.4); }
+  .ornament.bl { bottom: 1.5rem; left: 2.5rem; border-bottom: 1px solid rgba(184,150,46,0.4); border-left: 1px solid rgba(184,150,46,0.4); }
+  .ornament.br { bottom: 1.5rem; right: 2.5rem; border-bottom: 1px solid rgba(184,150,46,0.4); border-right: 1px solid rgba(184,150,46,0.4); }
 
-  .hero-content { position: relative; z-index: 2; }
+  .hero-content { position: relative; z-index: 2; max-width: 750px; }
   .hero-tag {
-    display: inline-block;
-    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--gold); border: 1px solid rgba(201,168,76,0.35);
-    padding: 0.4rem 1.2rem; margin-bottom: 2rem;
+    display: inline-flex; align-items: center; gap: .7rem;
+    font-size: .62rem; letter-spacing: .35em; text-transform: uppercase;
+    color: var(--wine); margin-bottom: 1.5rem;
     animation: fadeUp .8s ease both;
   }
+  .hero-tag::before, .hero-tag::after { content: '✦'; font-size: .45rem; color: var(--gold); }
+  .hero-cross-big {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem; color: var(--gold);
+    margin-bottom: .5rem; display: block;
+    animation: fadeUp .8s .1s ease both;
+    text-shadow: 0 2px 20px var(--gold-glow);
+  }
   .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 8vw, 7rem);
-    font-weight: 300; line-height: 1.05;
-    color: var(--white);
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.2rem, 6vw, 5rem);
+    font-weight: 600; line-height: 1.1; letter-spacing: .06em;
+    color: var(--text);
     animation: fadeUp .8s .15s ease both;
   }
-  .hero-title em { color: var(--gold); font-style: italic; }
-  .hero-sub {
-    margin-top: 1.4rem;
-    font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--muted);
-    animation: fadeUp .8s .3s ease both;
+  .hero-title .gold { color: var(--gold); }
+  .hero-lema {
+    margin-top: 1rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem; font-style: italic; font-weight: 300;
+    color: var(--wine); letter-spacing: .08em;
+    animation: fadeUp .8s .25s ease both;
   }
   .hero-divider {
-    width: 60px; height: 1px; background: var(--gold);
-    margin: 2rem auto;
-    animation: fadeUp .8s .4s ease both;
+    display: flex; align-items: center; gap: .8rem;
+    margin: 1.8rem auto; max-width: 320px;
+    animation: fadeUp .8s .3s ease both;
   }
-  .hero-desc {
-    max-width: 480px; margin: 0 auto;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem; font-style: italic; font-weight: 300;
-    color: var(--text); line-height: 1.7;
-    animation: fadeUp .8s .5s ease both;
+  .hero-divider::before, .hero-divider::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: .5; }
+  .hero-divider span { color: var(--gold); font-size: .7rem; }
+  .hero-sub {
+    font-size: .8rem; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--muted); line-height: 2;
+    animation: fadeUp .8s .35s ease both;
   }
   .hero-cta {
-    margin-top: 3rem;
-    display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;
-    animation: fadeUp .8s .65s ease both;
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    margin-top: 2.5rem;
+    animation: fadeUp .8s .45s ease both;
   }
   .btn-gold {
-    background: var(--gold); color: var(--dark);
-    padding: .85rem 2.4rem; font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    background: var(--gold); color: var(--white);
+    padding: 1rem 2.8rem;
+    font-family: 'Lato', sans-serif;
+    font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 700;
     border: none; cursor: pointer; text-decoration: none;
+    transition: background .3s, box-shadow .3s, transform .2s;
+  }
+  .btn-gold:hover { background: var(--gold-dk); box-shadow: 0 6px 25px var(--gold-glow); transform: translateY(-2px); }
+  .btn-wine-outline {
+    background: transparent; color: var(--wine);
+    padding: 1rem 2.8rem;
+    font-family: 'Lato', sans-serif;
+    font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 700;
+    border: 1px solid var(--wine); cursor: pointer; text-decoration: none;
     transition: background .3s, transform .2s;
-    font-weight: 400;
   }
-  .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
-  .btn-outline {
-    background: transparent; color: var(--gold);
-    padding: .85rem 2.4rem;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
-    border: 1px solid rgba(201,168,76,0.5); cursor: pointer; text-decoration: none;
-    transition: border-color .3s, color .3s, transform .2s;
-  }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold-lt); transform: translateY(-2px); }
+  .btn-wine-outline:hover { background: var(--wine-lt); transform: translateY(-2px); }
 
-  .hero-scroll {
-    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: .5rem;
-    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--muted); animation: fadeUp 1s 1s ease both;
-  }
-  .scroll-line {
-    width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent);
-    animation: scrollAnim 2s ease-in-out infinite;
-  }
-  @keyframes scrollAnim { 0%,100%{opacity:.4;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.2)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── SECTION BASE ── */
-  section { padding: 7rem 2rem; }
-  .section-tag {
-    font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: .8rem;
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 300; color: var(--white);
-    line-height: 1.15;
-  }
-  .section-title em { font-style: italic; color: var(--gold); }
-  .section-divider {
-    width: 50px; height: 1px; background: var(--gold);
-    margin: 1.5rem 0 2.5rem;
-  }
-  .centered { text-align: center; }
-  .centered .section-divider { margin: 1.5rem auto 2.5rem; }
-
-  /* ── STATS BAR ── */
+  /* ── STATS ── */
   .stats-bar {
-    background: var(--card);
-    border-top: 1px solid rgba(201,168,76,0.15);
-    border-bottom: 1px solid rgba(201,168,76,0.15);
+    background: linear-gradient(135deg, #5a1422 0%, #6b1a2a 40%, #7d1f32 70%, #5a1422 100%);
     display: flex; justify-content: center; flex-wrap: wrap;
-    gap: 0;
+    position: relative; overflow: hidden;
+  }
+  .stats-bar::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg, transparent, transparent 20px,
+      rgba(255,255,255,0.018) 20px, rgba(255,255,255,0.018) 21px
+    );
+  }
+  .stats-bar::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold-lt), transparent);
   }
   .stat-item {
-    padding: 2.5rem 3.5rem;
-    text-align: center;
-    border-right: 1px solid rgba(201,168,76,0.1);
+    padding: 2.2rem 3rem; text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    position: relative; z-index: 1;
   }
   .stat-item:last-child { border-right: none; }
   .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.8rem; font-weight: 300; color: var(--gold);
-    line-height: 1;
+    font-family: 'Cinzel', serif;
+    font-size: 2.4rem; color: var(--gold-lt); line-height: 1;
   }
-  .stat-label {
-    font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--muted); margin-top: .4rem;
+  .stat-label { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: .3rem; }
+
+  /* ── SECTION ── */
+  section { padding: 7rem 3rem; position: relative; z-index: 1; }
+  .section-tag {
+    font-size: .62rem; letter-spacing: .32em; text-transform: uppercase;
+    color: var(--wine); margin-bottom: .5rem;
   }
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 500; color: var(--text); line-height: 1.15;
+    letter-spacing: .04em;
+  }
+  .section-title .gold { color: var(--gold); }
+  .section-ornament {
+    display: flex; align-items: center; gap: .6rem;
+    margin: 1rem 0 2.5rem;
+  }
+  .section-ornament::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+  .section-ornament::after  { content: '✦'; color: var(--gold); font-size: .55rem; }
+  .centered { text-align: center; }
+  .centered .section-ornament { justify-content: center; }
 
   /* ── GALLERY ── */
-  .gallery-section { background: var(--mid); }
+  .gallery-section { background: var(--cream2); padding: 7rem 0; }
+  .gallery-header { padding: 0 3rem; margin-bottom: 3rem; }
   .gallery-grid {
-    max-width: 1200px; margin: 0 auto;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 12px;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: 270px 270px;
+    gap: 6px; padding: 0 3rem;
+    max-width: 1300px; margin: 0 auto;
   }
-  .gallery-item {
-    overflow: hidden; position: relative;
-    background: var(--card);
-  }
-  .gallery-item:first-child { grid-row: 1 / 3; }
-  .gallery-item img {
+  .g-item { overflow: hidden; position: relative; background: var(--light); }
+  .g-item:first-child { grid-row: 1/3; }
+  .g-item img {
     width: 100%; height: 100%; object-fit: cover;
-    display: block; transition: transform .6s ease;
-    filter: brightness(.9) saturate(1.1);
+    transition: transform .7s ease;
+    filter: brightness(.92) saturate(.95);
   }
-  .gallery-item:hover img { transform: scale(1.06); }
-  .gallery-item-label {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 1.2rem 1rem .8rem;
-    background: linear-gradient(to top, rgba(17,11,6,.85) 0%, transparent 100%);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem; font-style: italic; color: var(--cream);
+  .g-item:hover img { transform: scale(1.05); filter: brightness(.98) saturate(1.05); }
+  .g-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(58,46,34,.65) 0%, transparent 55%);
     opacity: 0; transition: opacity .4s;
   }
-  .gallery-item:hover .gallery-item-label { opacity: 1; }
+  .g-item:hover .g-overlay { opacity: 1; }
+  .g-label {
+    position: absolute; bottom: 0; left: 0; right: 0; padding: 1.4rem;
+    font-family: 'Cinzel', serif; font-size: 1rem; color: var(--white);
+    opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .4s;
+  }
+  .g-item:hover .g-label { opacity: 1; transform: translateY(0); }
+  /* gold top border on hover */
+  .g-item::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--gold); transform: scaleX(0); transition: transform .4s; z-index: 2;
+  }
+  .g-item:hover::before { transform: scaleX(1); }
 
-  /* placeholder colored boxes as "images" */
-  .img-placeholder {
-    width: 100%; height: 100%; min-height: 220px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3rem;
+  /* ── HORARIOS ── */
+  .hours-section { background: var(--white); }
+  .hours-inner { max-width: 1000px; margin: 0 auto; }
+  .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
+  .hour-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    padding: 2rem;
+    transition: box-shadow .3s, transform .3s;
+  }
+  .hour-card:hover { box-shadow: 0 8px 30px var(--gold-glow); transform: translateY(-3px); }
+  .hour-card.wine-top { border-top-color: var(--wine); }
+  .hour-day {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem; font-weight: 500; color: var(--text); margin-bottom: .3rem;
+  }
+  .hour-service { font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--wine); margin-bottom: 1rem; }
+  .hour-time {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem; color: var(--gold); line-height: 1; margin-bottom: .3rem;
+  }
+  .hour-desc { font-size: .78rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── EVENTOS ── */
+  .events-section { background: var(--cream2); }
+  .events-inner { max-width: 1100px; margin: 0 auto; }
+  .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 1.5rem; }
+  .event-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: box-shadow .3s, transform .3s;
+  }
+  .event-card:hover { box-shadow: 0 10px 35px var(--gold-glow); transform: translateY(-4px); }
+  .event-top {
+    background: var(--wine); padding: 1.2rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .event-month {
+    font-family: 'Cinzel', serif;
+    font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.7);
+  }
+  .event-icon { font-size: 1.4rem; }
+  .event-body { padding: 1.5rem; }
+  .event-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem; font-weight: 500; color: var(--text); margin-bottom: .4rem;
+  }
+  .event-desc { font-size: .78rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+  .event-tag {
+    display: inline-flex; align-items: center; gap: .4rem;
+    font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700;
+    padding: .35rem 1rem; border-radius: 20px;
+  }
+  .event-tag.kids    { background: rgba(251,191,36,0.15); color: #b45309; border: 1px solid rgba(251,191,36,0.4); }
+  .event-tag.familia { background: rgba(107,26,42,0.1);   color: var(--wine); border: 1px solid rgba(107,26,42,0.25); }
+  .event-tag.iglesia { background: rgba(184,150,46,0.12); color: var(--gold-dk); border: 1px solid rgba(184,150,46,0.35); }
+  .event-tag.jovenes { background: rgba(59,130,246,0.1);  color: #1d4ed8; border: 1px solid rgba(59,130,246,0.3); }
+
+  /* ── MINISTERIOS ── */
+  .ministerios-section {
+    background: linear-gradient(160deg, #3a2e22 0%, #2e2318 100%);
+  }
+  .min-inner { max-width: 1100px; margin: 0 auto; }
+  .min-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1.5rem; }
+  .min-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(184,150,46,0.2);
+    padding: 2.5rem 2rem; text-align: center;
+    transition: box-shadow .3s, transform .3s, background .3s;
     position: relative; overflow: hidden;
   }
-  .img-placeholder::before {
-    content: ''; position: absolute; inset: 0;
-    transition: transform .6s ease;
+  .min-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    transform: scaleX(0); transition: transform .4s;
   }
-  .gallery-item:hover .img-placeholder::before { transform: scale(1.06); }
+  .min-card:hover { background: rgba(255,255,255,0.09); box-shadow: 0 8px 30px rgba(0,0,0,.3); transform: translateY(-3px); }
+  .min-card:hover::before { transform: scaleX(1); }
+  .min-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+  .min-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem; font-weight: 500; color: var(--cream); margin-bottom: .5rem;
+  }
+  .min-desc { font-size: .75rem; color: rgba(237,229,214,0.55); line-height: 1.7; }
+  /* override section tag color inside dark section */
+  .ministerios-section .section-tag { color: var(--gold-lt); }
+  .ministerios-section .section-title { color: var(--cream); }
+  .ministerios-section .section-ornament::before { background: var(--gold-lt); }
+  .ministerios-section .section-ornament::after { color: var(--gold-lt); }
 
-  .ip-1::before { background: linear-gradient(135deg,#3b1a0a,#5c2a0e,#2a1208); }
-  .ip-2::before { background: linear-gradient(135deg,#1a2a1a,#2a3d1e,#0e1a0a); }
-  .ip-3::before { background: linear-gradient(135deg,#2a1a0a,#4a2e12,#1a0e05); }
-  .ip-4::before { background: linear-gradient(135deg,#1a0a2a,#2e1245,#0a0515); }
-  .ip-5::before { background: linear-gradient(135deg,#2a1a10,#3d2816,#180e07); }
-
-  /* ── MENU / PRICES ── */
-  .menu-section { max-width: 1100px; margin: 0 auto; }
-  .menu-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 1rem; }
-  .menu-category { margin-bottom: 2.5rem; }
-  .menu-cat-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem; font-style: italic; color: var(--gold);
-    border-bottom: 1px solid rgba(201,168,76,0.2);
-    padding-bottom: .6rem; margin-bottom: 1.2rem;
-  }
-  .menu-item {
-    display: flex; justify-content: space-between; align-items: baseline;
-    padding: .55rem 0;
-    border-bottom: 1px dotted rgba(201,168,76,0.1);
-  }
-  .menu-item:last-child { border-bottom: none; }
-  .menu-item-name { font-size: 0.82rem; color: var(--text); }
-  .menu-item-price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem; color: var(--gold-lt); white-space: nowrap; margin-left: 1rem;
-  }
-
-  .price-box {
-    background: var(--card);
-    border: 1px solid rgba(201,168,76,0.2);
-    padding: 2.5rem; margin-top: 3rem;
-    display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;
-  }
-  .price-big {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem; font-weight: 300; color: var(--gold);
-    line-height: 1;
-  }
-  .price-big span { font-size: 1.5rem; vertical-align: top; margin-top: .5rem; display: inline-block; }
-  .price-desc { flex: 1; min-width: 200px; }
-  .price-desc h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem; color: var(--white); margin-bottom: .5rem;
-  }
-  .price-desc p { font-size: .78rem; line-height: 1.7; color: var(--muted); }
-
-  /* ── HOURS ── */
-  .hours-section {
-    background: var(--card);
-    border-top: 1px solid rgba(201,168,76,0.12);
-    border-bottom: 1px solid rgba(201,168,76,0.12);
-  }
-  .hours-inner { max-width: 900px; margin: 0 auto; }
-  .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 1rem; }
-  .day-row {
-    display: flex; justify-content: space-between;
-    padding: .7rem 0;
-    border-bottom: 1px solid rgba(201,168,76,0.08);
-    font-size: .78rem;
-  }
-  .day-name { color: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
-  .day-time { color: var(--cream); }
-  .day-closed { color: var(--muted); font-style: italic; }
-  .today-badge {
-    display: inline-block;
-    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
-    color: var(--gold); font-size: .58rem; letter-spacing: .15em;
-    text-transform: uppercase; padding: .15rem .5rem; margin-left: .6rem;
-    vertical-align: middle;
-  }
-
-  /* ── REVIEWS ── */
-  .reviews-section { max-width: 1100px; margin: 0 auto; }
-  .reviews-top {
-    display: flex; align-items: flex-end; gap: 2rem; flex-wrap: wrap;
-    margin-bottom: 3rem;
-  }
-  .rating-big {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 6rem; font-weight: 300; color: var(--gold); line-height: 1;
-  }
-  .rating-info { padding-bottom: .6rem; }
-  .stars { color: var(--gold); font-size: 1.2rem; letter-spacing: .1em; }
-  .rating-count { font-size: .72rem; color: var(--muted); margin-top: .3rem; }
-
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
-    gap: 1.5rem;
-  }
-  .review-card {
-    background: var(--card);
-    border: 1px solid rgba(201,168,76,0.1);
-    padding: 1.8rem;
-    transition: border-color .3s;
-  }
-  .review-card:hover { border-color: rgba(201,168,76,0.35); }
-  .review-stars { color: var(--gold); font-size: .9rem; margin-bottom: .8rem; }
-  .review-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem; font-style: italic; line-height: 1.65;
-    color: var(--cream);
-  }
-  .review-author {
-    margin-top: 1.2rem;
-    font-size: .65rem; letter-spacing: .15em; text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  /* ── MAP / LOCATION ── */
-  .location-section { background: var(--mid); }
+  /* ── LOCATION ── */
+  .location-section { background: var(--cream2); }
   .location-inner { max-width: 1100px; margin: 0 auto; }
-  .location-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .branch-card {
-    background: var(--card);
-    border: 1px solid rgba(201,168,76,0.15);
-    padding: 2rem 2rem 1.5rem;
-    margin-bottom: 1.5rem;
+  .location-cols { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start; }
+  .info-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--gold);
+    padding: 2rem; margin-bottom: 1.5rem;
+    transition: box-shadow .3s;
   }
-  .branch-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem; color: var(--white); margin-bottom: .4rem;
+  .info-card:hover { box-shadow: 0 6px 25px var(--gold-glow); }
+  .info-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem; color: var(--text); margin-bottom: .5rem;
   }
-  .branch-addr { font-size: .75rem; color: var(--muted); line-height: 1.6; }
-  .branch-phone {
-    display: inline-flex; align-items: center; gap: .5rem;
-    margin-top: .8rem;
-    font-size: .75rem; color: var(--gold); text-decoration: none;
+  .info-text { font-size: .78rem; color: var(--muted); line-height: 1.8; }
+  .info-link {
+    display: inline-flex; align-items: center; gap: .4rem;
+    margin-top: .7rem; font-size: .78rem; color: var(--gold); text-decoration: none;
     transition: color .3s;
   }
-  .branch-phone:hover { color: var(--gold-lt); }
-
+  .info-link:hover { color: var(--gold-dk); }
+  .map-wrap { position: relative; }
+  .map-wrap::before {
+    content: ''; position: absolute;
+    top: -5px; left: -5px; right: 5px; bottom: 5px;
+    border: 1px solid rgba(184,150,46,0.3); z-index: 0;
+  }
   .map-frame {
-    width: 100%; height: 380px;
-    border: 1px solid rgba(201,168,76,0.15);
-    filter: grayscale(100%) sepia(20%) brightness(.8);
+    width: 100%; height: 400px; position: relative; z-index: 1;
+    filter: sepia(15%) brightness(.97);
     transition: filter .4s;
   }
-  .map-frame:hover { filter: grayscale(50%) sepia(10%) brightness(.9); }
+  .map-frame:hover { filter: sepia(0%) brightness(1); }
 
-  /* ── WHATSAPP FLOAT ── */
+  /* ── WA FLOAT ── */
   .wa-float {
     position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
     background: #25d366; color: #fff;
     width: 58px; height: 58px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.7rem; text-decoration: none;
+    text-decoration: none;
     box-shadow: 0 4px 20px rgba(37,211,102,.4);
     transition: transform .3s, box-shadow .3s;
-    animation: waPop 1s 1.5s ease both;
+    animation: waPop 1s 1.5s ease both; opacity: 0;
   }
-  .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,.55); }
-  @keyframes waPop {
-    from { opacity:0; transform:scale(0); }
-    to   { opacity:1; transform:scale(1); }
-  }
+  .wa-float:hover { transform: scale(1.12); box-shadow: 0 6px 30px rgba(37,211,102,.6); }
+  @keyframes waPop { from{opacity:0;transform:scale(0)} to{opacity:1;transform:scale(1)} }
 
   /* ── FOOTER ── */
   footer {
-    background: #0a0603;
-    border-top: 1px solid rgba(201,168,76,0.12);
-    padding: 3rem 2rem;
+    background: var(--text);
+    padding: 4rem 3rem 2rem;
     text-align: center;
   }
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem; font-style: italic; color: var(--gold);
-    margin-bottom: .5rem;
+  .footer-cross {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem; color: var(--gold);
+    margin-bottom: .3rem;
   }
-  .footer-tagline { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
-  .footer-links { margin-top: 1.5rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+  .footer-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem; color: var(--white); letter-spacing: .1em;
+    margin-bottom: .3rem;
+  }
+  .footer-lema { font-size: .75rem; font-style: italic; color: rgba(255,255,255,.4); }
+  .footer-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
   .footer-links a {
     font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
-    color: var(--muted); text-decoration: none; transition: color .3s;
+    color: rgba(184,150,46,.5); text-decoration: none; transition: color .3s;
   }
   .footer-links a:hover { color: var(--gold); }
-  .footer-copy { margin-top: 2rem; font-size: .6rem; color: #3a2a1a; }
+  .footer-divider { width: 50px; height: 1px; background: rgba(184,150,46,.3); margin: 2rem auto; }
+  .footer-copy { font-size: .6rem; color: rgba(255,255,255,.2); }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── REDES SOCIALES ── */
+  .redes-section { background: var(--cream2); }
+  .redes-inner { max-width: 900px; margin: 0 auto; }
+  .redes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 1.5rem; margin-top: 1rem; }
+  .red-card {
+    border: 1px solid var(--border);
+    padding: 2.2rem 1.8rem; text-align: center;
+    background: var(--cream);
+    transition: box-shadow .3s, transform .3s;
+    text-decoration: none;
+    display: block;
+  }
+  .red-card:hover { box-shadow: 0 8px 30px var(--gold-glow); transform: translateY(-4px); }
+  .red-icon { font-size: 2.2rem; margin-bottom: .8rem; display: block; }
+  .red-name {
+    font-family: 'Cinzel', serif;
+    font-size: .95rem; font-weight: 500; color: var(--text); margin-bottom: .3rem;
+  }
+  .red-handle { font-size: .75rem; color: var(--muted); margin-bottom: .8rem; }
+  .red-btn {
+    display: inline-block;
+    font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 700;
+    padding: .4rem 1.2rem; border: 1px solid var(--gold); color: var(--gold);
+    transition: background .3s, color .3s;
+  }
+  .red-card:hover .red-btn { background: var(--gold); color: var(--white); }
+
+  /* ── ORACION ── */
+  .oracion-section { background: var(--wine); }
+  .oracion-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+  .oracion-inner .section-tag { color: rgba(212,176,90,0.7); }
+  .oracion-inner .section-title { color: var(--white); }
+  .oracion-inner .section-ornament::before { background: rgba(212,176,90,0.4); }
+  .oracion-inner .section-ornament::after { color: var(--gold-lt); }
+  .oracion-desc { font-size: .88rem; color: rgba(255,255,255,.65); line-height: 1.8; margin-bottom: 2.5rem; font-style: italic; }
+  .oracion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+  .oracion-item {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(212,176,90,0.2);
+    padding: 1.5rem; text-align: center;
+  }
+  .oracion-item-icon { font-size: 1.6rem; margin-bottom: .5rem; display: block; }
+  .oracion-item-text { font-size: .75rem; color: rgba(255,255,255,.6); letter-spacing: .08em; }
+  .btn-wine-white {
+    display: inline-block;
+    background: var(--white); color: var(--wine);
+    padding: 1rem 3rem;
+    font-family: 'Lato', sans-serif;
+    font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 700;
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn-wine-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.2); }
+
+  .hour-card { border-radius: 8px; }
+  .event-card { border-radius: 8px; }
+  .min-card { border-radius: 8px; }
+  .red-card { border-radius: 8px; }
+  .info-card { border-radius: 8px; }
+  .btn-gold { border-radius: 6px; }
+  .btn-wine-outline { border-radius: 6px; }
+  .nav-cta { border-radius: 6px; }
+  .red-btn { border-radius: 4px; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    nav { padding: 1.2rem 1.5rem; }
-    .nav-links { display: none; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .gallery-item:first-child { grid-row: auto; grid-column: 1 / 3; }
-    .menu-cols { grid-template-columns: 1fr; gap: 2rem; }
-    .hours-grid { grid-template-columns: 1fr; gap: 0; }
-    .location-cols { grid-template-columns: 1fr; }
-    .stat-item { padding: 1.8rem 2rem; }
-    .reviews-grid { grid-template-columns: 1fr; }
+    /* NAV */
+    nav { padding: .9rem 1.2rem; }
+    .nav-links, .nav-cta { display: none; }
+    .nav-name { font-size: .85rem; }
+
+    /* HERO */
+    .hero { padding: 5rem 1.5rem 3rem; min-height: auto; }
+    .ornament { display: none; }
+    .hero-cross-big { font-size: 2rem; }
+    .hero-title { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+    .hero-lema { font-size: .88rem; }
+    .hero-desc { font-size: .82rem; }
+    .hero-cta { flex-direction: column; align-items: center; }
+    .btn-gold, .btn-wine-outline { width: 100%; text-align: center; padding: .9rem 1.5rem; }
+
+    /* STATS */
+    .stats-bar { display: grid; grid-template-columns: 1fr 1fr; }
+    .stat-item { padding: 1.5rem 1rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.08); }
+    .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+    .stat-num { font-size: 2rem; }
+
+    /* SECTIONS */
+    section { padding: 4rem 1.2rem; }
+    .section-title { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+
+    /* NOSOTROS */
+    #nosotros > div { display: flex; flex-direction: column; gap: 2rem; }
+    #nosotros > div > div:last-child > div:first-child {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    }
+    .vision-block { padding: 1rem 1.2rem; }
+
+    /* GALLERY */
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; padding: 0; gap: 3px; }
+    .g-item:first-child { grid-row: auto; grid-column: 1/3; height: 220px; }
+    .g-item { height: 160px; }
+
+    /* HOURS */
+    .hours-grid { grid-template-columns: 1fr; gap: 1px; }
+    .hour-card { padding: 1.5rem; border-radius: 0; }
+    .hour-card:hover { transform: none; }
+    .hour-time { font-size: 2.2rem; }
+
+    /* EVENTS */
+    .events-grid { grid-template-columns: 1fr; gap: 1px; }
+    .event-card:hover { transform: none; }
+
+    /* MINISTERIOS */
+    .min-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
+    .min-card { padding: 2rem 1.2rem; border-radius: 0; }
+    .min-card:hover { transform: none; }
+
+    /* REDES */
+    .redes-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .red-card { padding: 1.8rem; }
+
+    /* NOSOTROS VALUES GRID (inline styles override) */
+    #nosotros [style*="grid-template-columns: 1fr 1fr"] {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 1px !important;
+    }
+
+    /* LOCATION */
+    .location-cols { grid-template-columns: 1fr; gap: 1.5rem; }
+    .map-wrap::before { display: none; }
+    .map-frame { height: 280px; }
+    .info-card { border-radius: 8px; }
+
+    /* FOOTER */
+    footer { padding: 2.5rem 1.5rem; flex-direction: column; gap: 1.5rem; text-align: center; }
+    .footer-links { justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    /* WA FLOAT */
+    .wa-float { width: 52px; height: 52px; bottom: 1.2rem; right: 1.2rem; }
+
+    /* BUTTONS */
+    .btn-gold, .btn-wine-outline { font-size: .68rem; padding: .85rem 1.5rem; }
   }
 
-  /* ── SCROLL REVEAL ── */
-  .reveal {
-    opacity: 0; transform: translateY(30px);
-    transition: opacity .7s ease, transform .7s ease;
+  @media (max-width: 400px) {
+    .hero-title { font-size: 2rem; }
+    .min-grid { grid-template-columns: 1fr; }
+    .stat-num { font-size: 1.6rem; }
   }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">En Un Rincón Del Alma</div>
+  <div class="nav-logo">
+    <span class="nav-cross">✝</span>
+    <span class="nav-name">CIRE <span>Pachuca</span></span>
+  </div>
   <div class="nav-links">
-    <a href="#galeria">Galería</a>
-    <a href="#menu">Menú</a>
+    <a href="#nosotros">Nosotros</a>
     <a href="#horarios">Horarios</a>
-    <a href="#resenas">Reseñas</a>
+    <a href="#eventos">Eventos</a>
+    <a href="#ministerios">Ministerios</a>
+    <a href="#redes">Redes</a>
     <a href="#ubicacion">Ubicación</a>
   </div>
+  <a href="https://www.facebook.com/CIREpachuca" target="_blank" class="nav-cta">Únete</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-ring"></div>
-  <div class="hero-ring hero-ring-2"></div>
-
+  <div class="ornament tl"></div>
+  <div class="ornament tr"></div>
+  <div class="ornament bl"></div>
+  <div class="ornament br"></div>
   <div class="hero-content">
-    <div class="hero-tag">Buffet · Pachuca de Soto · Hidalgo</div>
+    <div class="hero-tag">Pachuca de Soto · Hidalgo</div>
+    <span class="hero-cross-big">✝</span>
     <h1 class="hero-title">
-      En Un Rincón<br><em>Del Alma</em>
+      Centro Internacional de<br>
+      <span class="gold">Restauración</span> y Excelencia
     </h1>
-    <div class="hero-sub">Buffet libre · Mar y Tierra · Sabores que perduran</div>
-    <div class="hero-divider"></div>
-    <p class="hero-desc">
-      Un festín de sabores en el corazón de Pachuca. Descubre nuestra selección de platillos con mariscos, antojitos y especialidades de temporada.
-    </p>
+    <p class="hero-lema">"Restaurados para restaurar"</p>
+    <div class="hero-divider"><span>✦</span></div>
+    <p class="hero-sub">Domingo · Miércoles · Viernes · Todas las familias son bienvenidas</p>
     <div class="hero-cta">
-      <a href="#menu" class="btn-gold">Ver Menú</a>
-      <a href="https://wa.me/527717192425" target="_blank" class="btn-outline">Reservar · WhatsApp</a>
+      <a href="#horarios" class="btn-gold">Ver Horarios</a>
+      <a href="#eventos" class="btn-wine-outline">Próximos Eventos</a>
     </div>
-  </div>
-
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span>Descubrir</span>
   </div>
 </section>
 
 <!-- STATS -->
 <div class="stats-bar reveal">
   <div class="stat-item">
-    <div class="stat-num">4.5</div>
-    <div class="stat-label">Calificación Google</div>
+    <div class="stat-num">+15</div>
+    <div class="stat-label">Años de ministerio</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">4,750+</div>
-    <div class="stat-label">Opiniones</div>
+    <div class="stat-num">4</div>
+    <div class="stat-label">Ministerios activos</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">$200</div>
-    <div class="stat-label">Precio por persona</div>
+    <div class="stat-num">3</div>
+    <div class="stat-label">Servicios por semana</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">+10</div>
-    <div class="stat-label">Años de experiencia</div>
+    <div class="stat-num">∞</div>
+    <div class="stat-label">Familias restauradas</div>
   </div>
 </div>
 
 <!-- GALLERY -->
 <section class="gallery-section" id="galeria">
-  <div style="max-width:1200px;margin:0 auto 3rem;padding:0 1rem" class="reveal">
-    <div class="section-tag">Galería</div>
-    <h2 class="section-title">Nuestros <em>Platillos</em></h2>
-    <div class="section-divider"></div>
+  <div class="gallery-header reveal centered">
+    <div class="section-tag">Nuestra comunidad</div>
+    <h2 class="section-title">Momentos de <span class="gold">Fe</span></h2>
+    <div class="section-ornament"></div>
   </div>
   <div class="gallery-grid reveal">
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&q=80&fit=crop" alt="Mariscos del día" style="min-height:460px;object-fit:cover">
-      <div class="gallery-item-label">Mariscos del día</div>
+    <div class="g-item">
+      <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=800&q=80&fit=crop" alt="Luz y esperanza">
+      <div class="g-overlay"></div>
+      <div class="g-label">Tiempo de adoración</div>
     </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80&fit=crop" alt="Ensaladas frescas" style="min-height:220px;object-fit:cover">
-      <div class="gallery-item-label">Ensaladas frescas</div>
+    <div class="g-item">
+      <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=600&q=80&fit=crop" alt="Adoración">
+      <div class="g-overlay"></div>
+      <div class="g-label">Tiempo de adoración</div>
     </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1604152135912-04a022e23696?w=600&q=80&fit=crop" alt="Platillo mexicano" style="min-height:220px;object-fit:cover">
-      <div class="gallery-item-label">Especialidad mexicana</div>
+    <div class="g-item">
+      <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=600&q=80&fit=crop" alt="Niños">
+      <div class="g-overlay"></div>
+      <div class="g-label">CIRE Kids</div>
     </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&q=80&fit=crop" alt="Postres artesanales" style="min-height:220px;object-fit:cover">
-      <div class="gallery-item-label">Postres artesanales</div>
+    <div class="g-item">
+      <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&q=80&fit=crop" alt="Familias">
+      <div class="g-overlay"></div>
+      <div class="g-label">Comunidad familiar</div>
     </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80&fit=crop" alt="Café de olla" style="min-height:220px;object-fit:cover">
-      <div class="gallery-item-label">Café de olla</div>
-    </div>
-  </div>
-</section>
-
-<!-- MENU -->
-<section id="menu" style="background:var(--dark); padding:7rem 2rem;">
-  <div class="menu-section reveal">
-    <div class="centered">
-      <div class="section-tag">Lo que ofrecemos</div>
-      <h2 class="section-title">Nuestro <em>Menú</em></h2>
-      <div class="section-divider"></div>
-    </div>
-
-    <div class="menu-cols">
-      <div>
-        <div class="menu-category">
-          <div class="menu-cat-title">Mariscos</div>
-          <div class="menu-item"><span class="menu-item-name">Camarones al ajillo</span><span class="menu-item-price">Buffet</span></div>
-          <div class="menu-item"><span class="menu-item-name">Ceviche fresco</span><span class="menu-item-price">Buffet</span></div>
-          <div class="menu-item"><span class="menu-item-name">Pulpo en su tinta</span><span class="menu-item-price">Buffet</span></div>
-          <div class="menu-item"><span class="menu-item-name">Pescado empapelado</span><span class="menu-item-price">Buffet</span></div>
-        </div>
-        <div class="menu-category">
-          <div class="menu-cat-title">Especialidades</div>
-          <div class="menu-item"><span class="menu-item-name">Chile en Nogada</span><span class="menu-item-price">Buffet</span></div>
-          <div class="menu-item"><span class="menu-item-name">Mole poblano</span><span class="menu-item-price">Buffet</span></div>
-          <div class="menu-item"><span class="menu-item-name">Barbacoa de res</span><span class="menu-item-price">Buffet</span></div>
-          <div class="menu-item"><span class="menu-item-name">Surtido variado</span><span class="menu-item-price">Buffet</span></div>
-        </div>
-      </div>
-      <div>
-        <div class="menu-category">
-          <div class="menu-cat-title">Ensaladas & Guarniciones</div>
-          <div class="menu-item"><span class="menu-item-name">Ensalada de temporada</span><span class="menu-item-price">Buffet</span></div>
-          <div class="menu-item"><span class="menu-item-name">Verduras salteadas</span><span class="menu-item-price">Buffet</span></div>
-          <div class="menu-item"><span class="menu-item-name">Arroz a la mexicana</span><span class="menu-item-price">Buffet</span></div>
-          <div class="menu-item"><span class="menu-item-name">Frijoles de olla</span><span class="menu-item-price">Buffet</span></div>
-        </div>
-        <div class="menu-category">
-          <div class="menu-cat-title">Bebidas & Postres</div>
-          <div class="menu-item"><span class="menu-item-name">Café de olla</span><span class="menu-item-price">Incluido</span></div>
-          <div class="menu-item"><span class="menu-item-name">Agua de sabor</span><span class="menu-item-price">Incluido</span></div>
-          <div class="menu-item"><span class="menu-item-name">Flan napolitano</span><span class="menu-item-price">Buffet</span></div>
-          <div class="menu-item"><span class="menu-item-name">Postres del día</span><span class="menu-item-price">Buffet</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="price-box reveal">
-      <div>
-        <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem">Precio Buffet Libre</div>
-        <div class="price-big"><span>$</span>200<span style="font-size:1.8rem">–300</span></div>
-      </div>
-      <div class="price-desc">
-        <h4>Todo incluido, come cuanto quieras</h4>
-        <p>Acceso ilimitado a todas las estaciones del buffet: mariscos, especialidades mexicanas, ensaladas, guarniciones, bebidas y postres. Precio por persona, reportado por más de 619 comensales.</p>
-      </div>
-      <a href="https://wa.me/527717192425" class="btn-gold" target="_blank">Reservar ahora</a>
+    <div class="g-item">
+      <img src="https://images.unsplash.com/photo-1464618663641-bbdd760ae84a?w=600&q=80&fit=crop" alt="Jóvenes">
+      <div class="g-overlay"></div>
+      <div class="g-label">Red de jóvenes</div>
     </div>
   </div>
 </section>
 
-<!-- HOURS -->
+<!-- HORARIOS -->
 <section class="hours-section" id="horarios">
   <div class="hours-inner reveal">
-    <div class="section-tag">Visítanos</div>
-    <h2 class="section-title">Horarios de <em>Atención</em></h2>
-    <div class="section-divider"></div>
+    <div class="centered">
+      <div class="section-tag">Visítanos</div>
+      <h2 class="section-title">Horarios de <span class="gold">Servicios</span></h2>
+      <div class="section-ornament"></div>
+    </div>
     <div class="hours-grid">
-      <div>
-        <div class="day-row"><span class="day-name">Lunes</span><span class="day-time">9:00 am – 7:00 pm</span></div>
-        <div class="day-row"><span class="day-name">Martes</span><span class="day-time">9:00 am – 7:00 pm</span></div>
-        <div class="day-row"><span class="day-name">Miércoles <span class="today-badge">Hoy</span></span><span class="day-time">9:00 am – 7:00 pm</span></div>
-        <div class="day-row"><span class="day-name">Jueves</span><span class="day-time">9:00 am – 7:00 pm</span></div>
+      <div class="hour-card">
+        <div class="hour-day">Domingo</div>
+        <div class="hour-service">Servicio Principal</div>
+        <div class="hour-time">10:00 AM</div>
+        <div class="hour-desc">Servicio familiar completo con adoración, predicación y tiempo para niños en CIRE Kids. ¡Todas las familias son bienvenidas!</div>
       </div>
-      <div>
-        <div class="day-row"><span class="day-name">Viernes</span><span class="day-time">9:00 am – 7:00 pm</span></div>
-        <div class="day-row"><span class="day-name">Sábado</span><span class="day-time">9:00 am – 7:00 pm</span></div>
-        <div class="day-row"><span class="day-name">Domingo</span><span class="day-time">9:00 am – 7:00 pm</span></div>
-        <div class="day-row" style="margin-top:1.5rem;border:none">
-          <a href="tel:7717192425" style="color:var(--gold);text-decoration:none;font-size:.78rem">
-            📞 771 719 2425
-          </a>
+      <div class="hour-card wine-top">
+        <div class="hour-day">Domingo</div>
+        <div class="hour-service">Segundo Servicio</div>
+        <div class="hour-time">12:30 PM</div>
+        <div class="hour-desc">Un segundo servicio para quienes no pueden asistir por la mañana. Mismo mensaje, misma unción.</div>
+      </div>
+      <div class="hour-card wine-top">
+        <div class="hour-day">Miércoles</div>
+        <div class="hour-service">Noche de Poder</div>
+        <div class="hour-time">7:00 PM</div>
+        <div class="hour-desc">Servicio entre semana de alabanza, adoración y la Palabra de Dios para recargar tu semana con fe.</div>
+      </div>
+      <div class="hour-card">
+        <div class="hour-day">Viernes</div>
+        <div class="hour-service">Red de Jóvenes</div>
+        <div class="hour-time">7:00 PM</div>
+        <div class="hour-desc">Espacio especial para jóvenes y adolescentes. Un lugar donde perteneces, eres valorado y puedes crecer en fe.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTOS -->
+<section class="events-section" id="eventos">
+  <div class="events-inner reveal">
+    <div class="centered">
+      <div class="section-tag">Agenda</div>
+      <h2 class="section-title">Próximos <span class="gold">Eventos</span></h2>
+      <div class="section-ornament"></div>
+    </div>
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-top">
+          <div class="event-month">Enero</div>
+          <span class="event-icon">🏕️</span>
+        </div>
+        <div class="event-body">
+          <div class="event-name">Campamento de Niños</div>
+          <div class="event-desc">Un fin de semana lleno de aventura, aprendizaje y fe para los más pequeños de la iglesia. Actividades, juegos y la Palabra de Dios.</div>
+          <span class="event-tag kids">🧒 CIRE Kids</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-top">
+          <div class="event-month">Febrero</div>
+          <span class="event-icon">🙏</span>
+        </div>
+        <div class="event-body">
+          <div class="event-name">Retiro de Parejas</div>
+          <div class="event-desc">Un retiro especial para fortalecer el matrimonio y la familia. Charlas, dinámicas y tiempo de calidad para las parejas de la iglesia.</div>
+          <span class="event-tag familia">💑 Familias</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-top">
+          <div class="event-month">Marzo</div>
+          <span class="event-icon">🔥</span>
+        </div>
+        <div class="event-body">
+          <div class="event-name">Conferencia Sobrenatural</div>
+          <div class="event-desc">Conferencistas invitados, noches de milagros y una experiencia transformadora para toda la congregación. No te lo pierdas.</div>
+          <span class="event-tag iglesia">✨ Toda la iglesia</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-top">
+          <div class="event-month">Abril</div>
+          <span class="event-icon">⛺</span>
+        </div>
+        <div class="event-body">
+          <div class="event-name">Retiro de Jóvenes</div>
+          <div class="event-desc">Un encuentro poderoso para la generación joven. Dos días de adoración intensa, palabra y compañerismo en la naturaleza.</div>
+          <span class="event-tag jovenes">🎸 Red Jóvenes</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-top">
+          <div class="event-month">Mayo</div>
+          <span class="event-icon">👨‍👩‍👧‍👦</span>
+        </div>
+        <div class="event-body">
+          <div class="event-name">Día de la Familia CIRE</div>
+          <div class="event-desc">Un día especial para celebrar a las familias con actividades, comida y un servicio lleno de gratitud y bendición.</div>
+          <span class="event-tag familia">💑 Familias</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-top">
+          <div class="event-month">Junio</div>
+          <span class="event-icon">💧</span>
+        </div>
+        <div class="event-body">
+          <div class="event-name">Servicio de Bautismos</div>
+          <div class="event-desc">Celebra con nosotros el paso de fe de nuevos creyentes. Una fecha especial de testimonio y dedicación a Dios.</div>
+          <span class="event-tag iglesia">✨ Toda la iglesia</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section id="resenas" style="padding:7rem 2rem;background:var(--dark)">
-  <div class="reviews-section reveal">
-    <div class="section-tag">Lo que dicen</div>
-    <h2 class="section-title">Reseñas de <em>Nuestros Clientes</em></h2>
-    <div class="section-divider"></div>
-    <div class="reviews-top">
-      <div class="rating-big">4.5</div>
-      <div class="rating-info">
-        <div class="stars">★★★★½</div>
-        <div class="rating-count">Basado en 4,750+ opiniones en Google</div>
+<!-- MINISTERIOS -->
+<section class="ministerios-section" id="ministerios">
+  <div class="min-inner reveal">
+    <div class="centered">
+      <div class="section-tag">Redes</div>
+      <h2 class="section-title">Nuestros <span class="gold">Ministerios</span></h2>
+      <div class="section-ornament"></div>
+    </div>
+    <div class="min-grid">
+      <div class="min-card">
+        <span class="min-icon">👶</span>
+        <div class="min-name">CIRE Kids</div>
+        <div class="min-desc">Espacio dedicado a los niños donde aprenden sobre Dios de manera divertida, segura y llena de amor.</div>
+      </div>
+      <div class="min-card">
+        <span class="min-icon">🎸</span>
+        <div class="min-name">Red de Jóvenes</div>
+        <div class="min-desc">Ministerio para adolescentes y jóvenes adultos. Un lugar de pertenencia, identidad y propósito.</div>
+      </div>
+      <div class="min-card">
+        <span class="min-icon">💑</span>
+        <div class="min-name">Red de Familias</div>
+        <div class="min-desc">Fortalecemos matrimonios y familias con herramientas prácticas y la Palabra de Dios como fundamento.</div>
+      </div>
+      <div class="min-card">
+        <span class="min-icon">🎵</span>
+        <div class="min-name">Alabanza y Adoración</div>
+        <div class="min-desc">Un equipo apasionado que guía a la congregación a la presencia de Dios a través de la música contemporánea.</div>
       </div>
     </div>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Deliciosos platillos y gran variedad, cafecito rico y económico. Uno de mis lugares favoritos en Pachuca."</p>
-        <div class="review-author">— Cliente Google · hace 2 semanas</div>
+  </div>
+</section>
+
+<!-- REDES SOCIALES -->
+<section class="redes-section" id="redes">
+  <div class="redes-inner reveal">
+    <div class="centered">
+      <div class="section-tag">Síguenos</div>
+      <h2 class="section-title">Nuestras <span class="gold">Redes Sociales</span></h2>
+      <div class="section-ornament"></div>
+    </div>
+    <div class="redes-grid">
+      <a href="https://www.facebook.com/CIREpachuca" target="_blank" class="red-card">
+        <span class="red-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </span>
+        <div class="red-name">Facebook</div>
+        <div class="red-handle">@CIREpachuca</div>
+        <span class="red-btn">Seguir</span>
+      </a>
+      <a href="https://www.instagram.com/cire_pachuca/" target="_blank" class="red-card">
+        <span class="red-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="url(#ig-grad)">
+            <defs>
+              <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#f09433"/>
+                <stop offset="25%" stop-color="#e6683c"/>
+                <stop offset="50%" stop-color="#dc2743"/>
+                <stop offset="75%" stop-color="#cc2366"/>
+                <stop offset="100%" stop-color="#bc1888"/>
+              </linearGradient>
+            </defs>
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </span>
+        <div class="red-name">Instagram</div>
+        <div class="red-handle">@cire_pachuca</div>
+        <span class="red-btn">Seguir</span>
+      </a>
+      <a href="https://wa.me/527711346386" target="_blank" class="red-card">
+        <span class="red-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </span>
+        <div class="red-name">WhatsApp</div>
+        <div class="red-handle">771 134 6386</div>
+        <span class="red-btn">Escribir</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section style="background:var(--white);padding:7rem 3rem;position:relative;z-index:1;" id="nosotros">
+  <div style="max-width:1100px;margin:0 auto" class="reveal">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center">
+      <!-- Left: text -->
+      <div>
+        <div class="section-tag">Quiénes somos</div>
+        <h2 class="section-title">Bienvenido a <span class="gold">CIRE</span></h2>
+        <div class="section-ornament"></div>
+        <p style="font-size:.9rem;line-height:1.9;color:var(--muted);margin-bottom:1.5rem">
+          Somos el <strong style="color:var(--text);font-weight:700">Centro Internacional de Restauración y Excelencia</strong>, una comunidad cristiana en Pachuca comprometida con transformar vidas a través de la Palabra de Dios.
+        </p>
+        <p style="font-size:.9rem;line-height:1.9;color:var(--muted);margin-bottom:2rem">
+          Creemos que cada persona tiene un propósito y que la familia es el fundamento de la sociedad. Aquí encontrarás un lugar de pertenencia, sanidad y crecimiento espiritual para ti y los tuyos.
+        </p>
+        <!-- vision / mision -->
+        <div style="display:flex;flex-direction:column;gap:1rem">
+          <div style="background:var(--cream2);border-left:3px solid var(--gold);padding:1.2rem 1.5rem;border-radius:0 8px 8px 0">
+            <div style="font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem">Visión</div>
+            <div style="font-size:.82rem;color:var(--text);line-height:1.6">Ser una iglesia que transforma naciones, comenzando por cada familia.</div>
+          </div>
+          <div style="background:var(--cream2);border-left:3px solid var(--wine);padding:1.2rem 1.5rem;border-radius:0 8px 8px 0">
+            <div style="font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--wine);margin-bottom:.3rem">Misión</div>
+            <div style="font-size:.82rem;color:var(--text);line-height:1.6">Restaurar vidas, fortalecer familias y levantar una generación de excelencia.</div>
+          </div>
+          <div style="background:var(--cream2);border-left:3px solid var(--gold);padding:1.2rem 1.5rem;border-radius:0 8px 8px 0">
+            <div style="font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem">Lema</div>
+            <div style="font-size:.82rem;color:var(--text);font-style:italic;line-height:1.6">"Restaurados para restaurar"</div>
+          </div>
+        </div>
       </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Excelente lugar para comer un buen buffet con mariscos y variedades de ensaladas. Muy recomendado."</p>
-        <div class="review-author">— Cliente Google · hace 1 mes</div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Buffet familiar muy variado, buen sazón, buena atención, precios accesibles. Regresamos seguido."</p>
-        <div class="review-author">— Cliente Google · hace 3 semanas</div>
+      <!-- Right: values grid -->
+      <div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div style="background:var(--cream2);border:1px solid var(--border);border-radius:8px;padding:2rem;text-align:center;transition:box-shadow .3s,transform .3s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 25px rgba(184,150,46,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <div style="font-size:2rem;margin-bottom:.8rem">✝️</div>
+            <div style="font-family:'Cinzel',serif;font-size:.9rem;color:var(--text);margin-bottom:.3rem">Fe</div>
+            <div style="font-size:.72rem;color:var(--muted);line-height:1.5">Fundamento de todo lo que somos</div>
+          </div>
+          <div style="background:var(--cream2);border:1px solid var(--border);border-radius:8px;padding:2rem;text-align:center;transition:box-shadow .3s,transform .3s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 25px rgba(184,150,46,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <div style="font-size:2rem;margin-bottom:.8rem">👨‍👩‍👧‍👦</div>
+            <div style="font-family:'Cinzel',serif;font-size:.9rem;color:var(--text);margin-bottom:.3rem">Familia</div>
+            <div style="font-size:.72rem;color:var(--muted);line-height:1.5">El corazón de nuestra comunidad</div>
+          </div>
+          <div style="background:var(--cream2);border:1px solid var(--border);border-radius:8px;padding:2rem;text-align:center;transition:box-shadow .3s,transform .3s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 25px rgba(184,150,46,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <div style="font-size:2rem;margin-bottom:.8rem">❤️</div>
+            <div style="font-family:'Cinzel',serif;font-size:.9rem;color:var(--text);margin-bottom:.3rem">Restauración</div>
+            <div style="font-size:.72rem;color:var(--muted);line-height:1.5">Dios sana y transforma vidas</div>
+          </div>
+          <div style="background:var(--cream2);border:1px solid var(--border);border-radius:8px;padding:2rem;text-align:center;transition:box-shadow .3s,transform .3s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 25px rgba(184,150,46,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <div style="font-size:2rem;margin-bottom:.8rem">⭐</div>
+            <div style="font-family:'Cinzel',serif;font-size:.9rem;color:var(--text);margin-bottom:.3rem">Excelencia</div>
+            <div style="font-size:.72rem;color:var(--muted);line-height:1.5">Todo para la gloria de Dios</div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;text-align:center">
+          <a href="#horarios" class="btn-gold" style="display:inline-block">Visítanos este domingo</a>
+        </div>
       </div>
     </div>
   </div>
@@ -670,24 +947,36 @@
 <!-- LOCATION -->
 <section class="location-section" id="ubicacion">
   <div class="location-inner reveal">
-    <div class="section-tag">Encuéntranos</div>
-    <h2 class="section-title">Nuestras <em>Ubicaciones</em></h2>
-    <div class="section-divider"></div>
+    <div class="section-tag">Visítanos</div>
+    <h2 class="section-title">Nuestra <span class="gold">Ubicación</span></h2>
+    <div class="section-ornament"></div>
     <div class="location-cols">
       <div>
-        <div class="branch-card">
-          <div class="branch-name">Sucursal Valle de San Javier</div>
-          <div class="branch-addr">Valle de San Javier, 42086<br>Pachuca de Soto, Hidalgo</div>
-          <a href="tel:7717192425" class="branch-phone">📞 771 719 2425</a>
+        <div class="info-card">
+          <div class="info-title">✝ CIRE Pachuca</div>
+          <div class="info-text">
+            Blvrd Everardo Márquez Km 1.5<br>
+            Salón Imperial, Coscotitlán<br>
+            42092 Pachuca de Soto, Hgo.
+          </div>
         </div>
-        <a href="https://wa.me/527717192425" target="_blank" class="btn-gold" style="display:inline-block;margin-top:.5rem">
-          Contactar por WhatsApp
+        <div class="info-card">
+          <div class="info-title">Horario de Oficina</div>
+          <div class="info-text">
+            Lunes a Viernes<br>
+            10:00 am – 2:00 pm<br>
+            4:00 pm – 7:00 pm
+          </div>
+          <a href="https://wa.me/527711346386" target="_blank" class="info-link">💬 Escríbenos por WhatsApp</a>
+        </div>
+        <a href="https://www.facebook.com/CIREpachuca" target="_blank" class="btn-gold" style="display:inline-block">
+          Seguirnos en Facebook
         </a>
       </div>
-      <div>
+      <div class="map-wrap">
         <iframe
           class="map-frame"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3737.5!2d-98.7268!3d20.1011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDA2JzA0LjAiTiA5OMKwNDMnMzYuNSJX!5e0!3m2!1ses!2smx!4v1234567890"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3738.2!2d-98.7460477!3d20.0960541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1a78c8103d4b1%3A0x96f093e935793e19!2sCIRE%20-%20Centro%20Internacional%20de%20Restauracion%20y%20Excelencia%20A.C.!5e0!3m2!1ses!2smx!4v1700000000005"
           allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
@@ -698,34 +987,32 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">En Un Rincón Del Alma</div>
-  <div class="footer-tagline">Buffet Libre · Pachuca de Soto, Hidalgo</div>
+  <div class="footer-cross">✝</div>
+  <div class="footer-name">CIRE Pachuca</div>
+  <div class="footer-lema">"Restaurados para restaurar"</div>
   <div class="footer-links">
-    <a href="#galeria">Galería</a>
-    <a href="#menu">Menú</a>
+    <a href="#nosotros">Nosotros</a>
     <a href="#horarios">Horarios</a>
-    <a href="#resenas">Reseñas</a>
+    <a href="#eventos">Eventos</a>
+    <a href="#ministerios">Ministerios</a>
+    <a href="#redes">Redes</a>
     <a href="#ubicacion">Ubicación</a>
-    <a href="https://wa.me/527717192425" target="_blank">WhatsApp</a>
   </div>
-  <div class="footer-copy">© 2025 En Un Rincón Del Alma · Todos los derechos reservados</div>
+  <div class="footer-divider"></div>
+  <div class="footer-copy">© 2025 CIRE — Centro Internacional de Restauración y Excelencia A.C. · Pachuca de Soto, Hidalgo</div>
 </footer>
 
 <!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/527717192425" target="_blank" class="wa-float" title="Contáctanos por WhatsApp">
+<a href="https://wa.me/527711346386" target="_blank" class="wa-float" title="Contáctanos por WhatsApp">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
   </svg>
 </a>
 
 <script>
-  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
